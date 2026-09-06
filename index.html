@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abishek — Portfolio</title>
+<title>Abishek Rathinam — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -65,15 +65,15 @@
     font-size: 1.05rem;
     color: var(--ink);
   }
-  .nav-links{ display:flex; gap: 26px; }
+  .nav-links{ display:flex; gap: 24px; }
   .nav-links a{
     color: var(--ink-dim);
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     font-weight: 500;
   }
   .nav-links a:hover{ color: var(--accent); text-decoration: none; }
 
-  @media (max-width: 560px){
+  @media (max-width: 640px){
     .nav-links{ display:none; }
   }
 
@@ -92,12 +92,18 @@
   }
   h1.name{
     font-size: clamp(2.4rem, 6vw, 3.4rem);
-    margin: 0 0 14px;
+    margin: 0 0 8px;
     font-weight: 600;
     line-height: 1.1;
   }
+  .headline{
+    font-size: clamp(1.1rem, 2.6vw, 1.35rem);
+    color: var(--ink);
+    font-weight: 500;
+    margin: 0 0 18px;
+  }
   .role-line{
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: var(--ink-dim);
     max-width: 600px;
     margin: 0 0 30px;
@@ -135,36 +141,83 @@
   #about p{ color: var(--ink-dim); font-size: 1.02rem; max-width: 680px; }
   #about p b{ color: var(--ink); font-weight: 600; }
 
-  /* Experience */
-  .exp-item{
-    display:grid;
-    grid-template-columns: 160px 1fr;
-    gap: 20px;
-    padding: 18px 0;
-    border-bottom: 1px solid var(--line);
+  /* Timeline */
+  .timeline{
+    margin-top: 36px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
   }
-  .exp-item:last-child{ border-bottom:none; }
-  .exp-date{
+  .timeline-step{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+  }
+  .timeline-node{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 10px 16px;
     font-size: 0.85rem;
-    color: var(--ink-dim);
     font-weight: 500;
+    white-space: nowrap;
   }
-  .exp-role{ font-size: 1.05rem; font-weight: 600; margin: 0 0 4px; }
-  .exp-org{ font-size: 0.92rem; color: var(--accent); margin: 0 0 8px; font-weight: 500; }
-  .exp-desc{ color: var(--ink-dim); font-size: 0.95rem; margin: 0; }
+  .timeline-node.current{
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .timeline-node.target{
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    font-weight: 600;
+  }
+  .timeline-arrow{
+    color: var(--ink-dim);
+    padding: 0 8px;
+    font-size: 0.9rem;
+  }
+  @media (max-width: 720px){
+    .timeline{ flex-direction: column; align-items: flex-start; }
+    .timeline-arrow{ transform: rotate(90deg); padding: 6px 0 6px 18px; }
+  }
 
-  @media (max-width: 560px){
-    .exp-item{ grid-template-columns: 1fr; gap: 4px; }
+  /* What I build */
+  .build-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 720px){
+    .build-grid{ grid-template-columns: 1fr; }
+  }
+  .build-card{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px;
+  }
+  .build-icon{ font-size: 1.4rem; margin-bottom: 10px; display:block; }
+  .build-title{ font-size: 1.02rem; font-weight: 600; margin: 0 0 8px; }
+  .build-desc{ font-size: 0.9rem; color: var(--ink-dim); margin: 0; }
+  .build-tag{
+    display:inline-block;
+    margin-top: 10px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
   }
 
   /* Projects */
   .project-grid{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 20px;
-  }
-  @media (max-width: 640px){
-    .project-grid{ grid-template-columns: 1fr; }
+    max-width: 560px;
   }
   .project-card{
     background: var(--panel);
@@ -176,7 +229,23 @@
     gap: 10px;
   }
   .project-title{ font-size: 1.08rem; font-weight: 600; margin:0; }
+  .project-problem{
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 500;
+    margin: 0;
+  }
   .project-desc{ color: var(--ink-dim); font-size: 0.92rem; margin:0; flex-grow:1; }
+  .project-flow{
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    color: var(--ink-dim);
+    background: var(--bg);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius);
+    padding: 10px 12px;
+    line-height: 1.9;
+  }
   .project-tags{ display:flex; flex-wrap:wrap; gap:6px; margin-top: 4px; }
   .tag{
     font-size: 0.75rem;
@@ -188,23 +257,52 @@
   }
   .project-link{ font-size: 0.88rem; font-weight: 600; margin-top: 6px; }
 
-  .more-projects{
+  .project-note{
     margin-top: 22px;
-    font-size: 0.92rem;
+    padding: 16px 18px;
+    border: 1px dashed var(--line);
+    border-radius: var(--radius);
+    font-size: 0.9rem;
     color: var(--ink-dim);
   }
 
   /* Skills */
-  .chip-row{ display:flex; flex-wrap: wrap; gap: 10px; }
+  .skills-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 40px;
+  }
+  @media (max-width: 640px){
+    .skills-grid{ grid-template-columns: 1fr; }
+  }
+  .skill-cat-title{
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+  .chip-row{ display:flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;}
   .chip{
     font-size: 0.85rem;
     font-weight: 500;
     border: 1px solid var(--line);
     background: var(--panel);
     color: var(--ink-dim);
-    padding: 8px 14px;
+    padding: 7px 13px;
     border-radius: 999px;
   }
+
+  /* Experience */
+  .exp-item{
+    padding: 4px 0 22px;
+  }
+  .exp-role{ font-size: 1.05rem; font-weight: 600; margin: 0 0 4px; }
+  .exp-org{ font-size: 0.92rem; color: var(--accent); margin: 0 0 10px; font-weight: 500; }
+  .exp-desc{ color: var(--ink-dim); font-size: 0.95rem; margin: 0 0 14px; }
+  .focus-list{ margin:0; padding-left: 18px; color: var(--ink-dim); font-size: 0.92rem; }
+  .focus-list li{ margin-bottom: 4px; }
 
   /* Footer */
   footer{ padding: 50px 0 70px; }
@@ -220,9 +318,10 @@
       <span class="nav-name">Abishek</span>
       <div class="nav-links">
         <a href="#about">About</a>
-        <a href="#experience">Experience</a>
+        <a href="#build">What I Build</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
@@ -230,17 +329,19 @@
 
   <header class="hero">
     <div class="wrap">
-      <span class="eyebrow">Digital Marketing · Software &amp; AI</span>
+      <span class="eyebrow">Software Development · AI/Automation</span>
       <h1 class="name serif">Abishek Rathinam</h1>
+      <p class="headline">CS graduate building toward software development and automation roles.</p>
       <p class="role-line">
-        <b>Digital Marketing Trainee</b> at Besten Engineers and Consultants, with a
-        Computer Science background. I work across social media, SEO, and content —
-        and I'm building toward software development and AI/automation roles.
+        Currently a <b>Digital Marketing Trainee</b> at Besten Engineers and Consultants —
+        learning Python, Java, and SQL, and building real automation pipelines with
+        <b>Make</b> and <b>n8n</b> along the way.
       </p>
       <div class="hero-links">
-        <a class="btn primary" href="https://github.com/abishekshiny" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn primary" href="#projects">View Projects</a>
+        <a class="btn" href="https://github.com/abishekshiny" target="_blank" rel="noopener">GitHub</a>
         <a class="btn" href="https://www.linkedin.com/in/abishek-rathinam-11b155284/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="mailto:you@email.com">Email</a>
+        <a class="btn" href="mailto:aabishek464@gmail.com">Email</a>
       </div>
     </div>
   </header>
@@ -249,40 +350,57 @@
     <div class="wrap">
       <h2 class="section-title serif">About</h2>
       <p>
-        I have a <b>B.E. in Computer Science</b> and currently work in digital marketing,
-        handling social media management, off-page SEO, keyword research, and
-        AI-assisted content workflows. That combination of technical grounding and
-        hands-on marketing work is what pulled me toward AI and automation —
-        I like understanding both how something is built and how people actually use it.
+        I'm a <b>Computer Science Engineering graduate</b> currently working as a
+        Digital Marketing Trainee, managing social media strategy, SEO, and keyword
+        research, alongside AI-assisted content workflows. I'm building toward
+        software development and automation — learning <b>Python, Java, and SQL</b>,
+        and developing automation pipelines with <b>Make</b> and <b>n8n</b>.
       </p>
-      <p>
-        I'm currently pivoting toward <b>software development and AI/automation</b> roles,
-        and using side projects to build that direction out in public.
-      </p>
+
+      <div class="timeline">
+        <div class="timeline-step">
+          <span class="timeline-node">B.E. Computer Science (2021–2025)</span>
+          <span class="timeline-arrow">→</span>
+        </div>
+        <div class="timeline-step">
+          <span class="timeline-node current">Digital Marketing Trainee</span>
+          <span class="timeline-arrow">→</span>
+        </div>
+        <div class="timeline-step">
+          <span class="timeline-node">Learning: Python, Java, SQL, Make, n8n</span>
+          <span class="timeline-arrow">→</span>
+        </div>
+        <div class="timeline-step">
+          <span class="timeline-node target">Software Development &amp; Automation</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="experience">
+  <section id="build">
     <div class="wrap">
-      <h2 class="section-title serif">Experience</h2>
-      <div class="exp-item">
-        <span class="exp-date">2024 — Present</span>
-        <div>
-          <p class="exp-role">Digital Marketing Trainee</p>
-          <p class="exp-org">Besten Engineers and Consultants India Pvt Ltd</p>
-          <p class="exp-desc">
-            Social media management, off-page SEO (backlink building, directory
-            submissions, business listings), keyword research, and AI-assisted
-            content workflows.
-          </p>
+      <h2 class="section-title serif">What I Build</h2>
+      <p style="color:var(--ink-dim); font-size:0.95rem; margin:-16px 0 24px; max-width:600px;">
+        Three areas my work spans right now — a quick snapshot before the project details below.
+      </p>
+      <div class="build-grid">
+        <div class="build-card">
+          <span class="build-icon">⚙️</span>
+          <p class="build-title">Automation</p>
+          <p class="build-desc">Tools that connect to each other and do repetitive work automatically — like pulling data from an API and saving it into a spreadsheet, using Make and n8n.</p>
+          <span class="build-tag">Hands-on</span>
         </div>
-      </div>
-      <div class="exp-item">
-        <span class="exp-date">2021 — 2025</span>
-        <div>
-          <p class="exp-role">B.E. Computer Science</p>
-          <p class="exp-org">Loyola Institute of Technology and Science</p>
-          <p class="exp-desc">CGPA 7.29 (First Class).</p>
+        <div class="build-card">
+          <span class="build-icon">🤖</span>
+          <p class="build-title">AI-Assisted Work</p>
+          <p class="build-desc">Using AI tools day-to-day to help with real marketing tasks — researching keywords, drafting content, answering questions.</p>
+          <span class="build-tag">Hands-on</span>
+        </div>
+        <div class="build-card">
+          <span class="build-icon">💻</span>
+          <p class="build-title">Software</p>
+          <p class="build-desc">Learning to code properly — Python, Java, and SQL — as the next step toward full software development work.</p>
+          <span class="build-tag">In progress</span>
         </div>
       </div>
     </div>
@@ -295,60 +413,43 @@
       <!--
         HOW TO EDIT THIS SECTION
         ------------------------
-        Each project is one ".project-card" block below. To add a new project,
-        copy a whole block (from <div class="project-card"> to its closing </div>)
-        and paste it before the closing </div> of "project-grid", then change:
-          - project-title text
-          - project-desc text
-          - the <span class="tag"> list (add/remove as needed)
-          - the href and label on the project-link (or delete that line if no link yet)
-        To remove a project, just delete its whole block.
+        Each project is one ".project-card" block. To add a new one, copy a
+        whole block and change: project-title, project-problem, project-desc,
+        the project-flow diagram (or delete that div if not applicable),
+        the tag list, and the project-link href/label.
       -->
       <div class="project-grid">
 
         <div class="project-card">
-          <p class="project-title">Project name</p>
-          <p class="project-desc">One or two sentences on what it does and why you built it.</p>
-          <div class="project-tags">
-            <span class="tag">Tech 1</span>
-            <span class="tag">Tech 2</span>
+          <p class="project-title">Quora Question Research Automation</p>
+          <p class="project-problem">Turns a list of keywords into ready-to-use Quora content research, automatically.</p>
+          <p class="project-desc">
+            An end-to-end Make workflow: feed it a list of keywords, and for
+            each one it calls the serper.dev API (via HTTP) to fetch the top
+            10 related Quora questions — with link, date, and snippet — and
+            logs them straight into Google Sheets. From there, selected
+            questions get AI-generated answers, ready for content use.
+          </p>
+          <div class="project-flow">
+            N keywords → serper.dev API (HTTP) → Top 10 Quora questions per keyword (link, date, snippet) → Google Sheets → Selected questions answered via AI
           </div>
-          <a class="project-link" href="#" target="_blank" rel="noopener">View project →</a>
-        </div>
-
-        <div class="project-card">
-          <p class="project-title">Project name</p>
-          <p class="project-desc">One or two sentences on what it does and why you built it.</p>
           <div class="project-tags">
-            <span class="tag">Tech 1</span>
-            <span class="tag">Tech 2</span>
+            <span class="tag">Make</span>
+            <span class="tag">serper.dev API</span>
+            <span class="tag">Google Sheets</span>
+            <span class="tag">AI-generated answers</span>
           </div>
-          <a class="project-link" href="#" target="_blank" rel="noopener">View project →</a>
-        </div>
-
-        <div class="project-card">
-          <p class="project-title">Project name</p>
-          <p class="project-desc">One or two sentences on what it does and why you built it.</p>
-          <div class="project-tags">
-            <span class="tag">Tech 1</span>
-            <span class="tag">Tech 2</span>
-          </div>
-          <a class="project-link" href="#" target="_blank" rel="noopener">View project →</a>
-        </div>
-
-        <div class="project-card">
-          <p class="project-title">Project name</p>
-          <p class="project-desc">One or two sentences on what it does and why you built it.</p>
-          <div class="project-tags">
-            <span class="tag">Tech 1</span>
-            <span class="tag">Tech 2</span>
-          </div>
-          <a class="project-link" href="#" target="_blank" rel="noopener">View project →</a>
         </div>
 
       </div>
 
-      <p class="more-projects">
+      <p class="project-note">
+        A third project — likely a small Python/SQL tool or a second automation
+        pipeline — is in progress. Following one project through to completion
+        beats spreading across several half-built ones.
+      </p>
+
+      <p class="more-projects" style="margin-top:16px; color:var(--ink-dim); font-size:0.92rem;">
         More on <a href="https://github.com/abishekshiny" target="_blank" rel="noopener">GitHub →</a>
       </p>
     </div>
@@ -357,24 +458,84 @@
   <section id="skills">
     <div class="wrap">
       <h2 class="section-title serif">Skills</h2>
-      <div class="chip-row">
-        <span class="chip">Digital Marketing</span>
-        <span class="chip">Social Media Management</span>
-        <span class="chip">SEO / Off-page SEO</span>
-        <span class="chip">Keyword Research</span>
-        <span class="chip">Python</span>
-        <span class="chip">Prompt Engineering</span>
-        <span class="chip">AI-Assisted Workflows</span>
-        <span class="chip">Git / GitHub</span>
+      <div class="skills-grid">
+        <div>
+          <p class="skill-cat-title">Programming</p>
+          <div class="chip-row">
+            <span class="chip">Python</span>
+            <span class="chip">Java</span>
+            <span class="chip">SQL</span>
+          </div>
+        </div>
+        <div>
+          <p class="skill-cat-title">Automation</p>
+          <div class="chip-row">
+            <span class="chip">Make</span>
+            <span class="chip">n8n</span>
+          </div>
+        </div>
+        <div>
+          <p class="skill-cat-title">AI / GenAI</p>
+          <div class="chip-row">
+            <span class="chip">Prompt Engineering</span>
+            <span class="chip">CO-STAR Framework</span>
+            <span class="chip">AI-Assisted Workflows</span>
+          </div>
+        </div>
+        <div>
+          <p class="skill-cat-title">Marketing &amp; Research</p>
+          <div class="chip-row">
+            <span class="chip">SEO / Off-page SEO</span>
+            <span class="chip">Keyword Research</span>
+            <span class="chip">Social Media Management</span>
+          </div>
+        </div>
+        <div>
+          <p class="skill-cat-title">Tools</p>
+          <div class="chip-row">
+            <span class="chip">Git</span>
+            <span class="chip">GitHub</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <h2 class="section-title serif">Experience</h2>
+      <div class="exp-item">
+        <p class="exp-role">Digital Marketing Trainee</p>
+        <p class="exp-org">Besten Engineers and Consultants India Pvt Ltd · Feb 2026 — Present</p>
+        <ul class="focus-list">
+          <li><b>SEO:</b> keyword rank checking, directory submissions, business listings</li>
+          <li><b>Social media content (Canva):</b> weekly cadence including motivational posters (Saturdays), inspirational posters (Mondays), blog-based posts, poll questions drawn from technical blog content, infographics, and carousel/technical posters</li>
+          <li><b>Quora content:</b> curating AI-generated answers to questions surfaced by the automation project above, for content use</li>
+          <li><b>News &amp; updates:</b> posting company news and congratulatory content</li>
+          <li><b>Email campaigns:</b> lead generation by collecting targeted decision-makers' contact details (name, position, domain email) for outreach</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <p class="exp-role">Current Focus</p>
+        <ul class="focus-list">
+          <li>Learning Python, Java, and SQL</li>
+          <li>Building automation projects with Make and n8n</li>
+          <li>Applying for Software Development / AI-Automation roles, based in Chennai</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <p class="exp-role">Education</p>
+        <p class="exp-org">B.E. Computer Science Engineering — Loyola Institute of Technology and Science</p>
+        <p class="exp-desc">2021 — 2025 · CGPA 7.29 (First Class)</p>
       </div>
     </div>
   </section>
 
   <footer id="contact">
     <div class="wrap">
-      <p class="foot-title serif">Let's talk</p>
+      <p class="foot-title serif">Let's build something useful.</p>
       <div class="hero-links">
-        <a class="btn primary" href="mailto:you@email.com">Email</a>
+        <a class="btn primary" href="mailto:aabishek464@gmail.com">Email</a>
         <a class="btn" href="https://www.linkedin.com/in/abishek-rathinam-11b155284/" target="_blank" rel="noopener">LinkedIn</a>
         <a class="btn" href="https://github.com/abishekshiny" target="_blank" rel="noopener">GitHub</a>
       </div>
