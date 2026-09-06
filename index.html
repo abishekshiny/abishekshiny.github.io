@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abishek — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #faf9f6;
+    --panel: #ffffff;
+    --ink: #1c2024;
+    --ink-dim: #5b6169;
+    --line: #e3e0d9;
+    --accent: #14524c;
+    --accent-soft: #e7efee;
+    --radius: 6px;
+    --maxw: 880px;
+  }
+
+  * { box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: var(--accent); text-decoration: none; }
+  a:hover{ text-decoration: underline; }
+  :focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .serif{ font-family: 'Fraunces', serif; }
+
+  .wrap{
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Nav ---------- */
+  nav{
+    position: sticky;
+    top: 0;
+    background: rgba(250,249,246,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+    z-index: 20;
+  }
+  nav .wrap{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .nav-name{
+    font-family:'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--ink);
+  }
+  .nav-links{ display:flex; gap: 26px; }
+  .nav-links a{
+    color: var(--ink-dim);
+    font-size: 0.92rem;
+    font-weight: 500;
+  }
+  .nav-links a:hover{ color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 560px){
+    .nav-links{ display:none; }
+  }
+
+  /* ---------- Hero ---------- */
+  header.hero{
+    padding: 80px 0 64px;
+  }
+  .eyebrow{
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display:block;
+  }
+  h1.name{
+    font-size: clamp(2.4rem, 6vw, 3.4rem);
+    margin: 0 0 14px;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+  .role-line{
+    font-size: 1.1rem;
+    color: var(--ink-dim);
+    max-width: 600px;
+    margin: 0 0 30px;
+  }
+  .role-line b{ color: var(--ink); font-weight: 600; }
+
+  .hero-links{ display:flex; flex-wrap: wrap; gap: 12px; }
+  .btn{
+    font-size: 0.88rem;
+    font-weight: 500;
+    padding: 10px 18px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    color: var(--ink);
+    background: var(--panel);
+  }
+  .btn:hover{ border-color: var(--accent); color: var(--accent); text-decoration: none; }
+  .btn.primary{
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .btn.primary:hover{ opacity: .9; color:#fff; }
+
+  /* ---------- Sections ---------- */
+  section{ padding: 56px 0; border-top: 1px solid var(--line); }
+
+  .section-title{
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 600;
+    margin: 0 0 28px;
+  }
+
+  /* About */
+  #about p{ color: var(--ink-dim); font-size: 1.02rem; max-width: 680px; }
+  #about p b{ color: var(--ink); font-weight: 600; }
+
+  /* Experience */
+  .exp-item{
+    display:grid;
+    grid-template-columns: 160px 1fr;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .exp-item:last-child{ border-bottom:none; }
+  .exp-date{
+    font-size: 0.85rem;
+    color: var(--ink-dim);
+    font-weight: 500;
+  }
+  .exp-role{ font-size: 1.05rem; font-weight: 600; margin: 0 0 4px; }
+  .exp-org{ font-size: 0.92rem; color: var(--accent); margin: 0 0 8px; font-weight: 500; }
+  .exp-desc{ color: var(--ink-dim); font-size: 0.95rem; margin: 0; }
+
+  @media (max-width: 560px){
+    .exp-item{ grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  /* Projects */
+  .project-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 640px){
+    .project-grid{ grid-template-columns: 1fr; }
+  }
+  .project-card{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px;
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .project-title{ font-size: 1.08rem; font-weight: 600; margin:0; }
+  .project-desc{ color: var(--ink-dim); font-size: 0.92rem; margin:0; flex-grow:1; }
+  .project-tags{ display:flex; flex-wrap:wrap; gap:6px; margin-top: 4px; }
+  .tag{
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 4px 9px;
+    border-radius: 999px;
+  }
+  .project-link{ font-size: 0.88rem; font-weight: 600; margin-top: 6px; }
+
+  .more-projects{
+    margin-top: 22px;
+    font-size: 0.92rem;
+    color: var(--ink-dim);
+  }
+
+  /* Skills */
+  .chip-row{ display:flex; flex-wrap: wrap; gap: 10px; }
+  .chip{
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    color: var(--ink-dim);
+    padding: 8px 14px;
+    border-radius: 999px;
+  }
+
+  /* Footer */
+  footer{ padding: 50px 0 70px; }
+  footer .foot-title{ font-size: 1.6rem; font-weight: 600; margin: 0 0 16px; }
+  footer .hero-links{ margin-bottom: 18px; }
+  footer .copyright{ font-size: 0.82rem; color: var(--ink-dim); }
+</style>
+</head>
+<body>
+
+  <nav>
+    <div class="wrap">
+      <span class="nav-name">Abishek</span>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Digital Marketing · Software &amp; AI</span>
+      <h1 class="name serif">Abishek Rathinam</h1>
+      <p class="role-line">
+        <b>Digital Marketing Trainee</b> at Besten Engineers and Consultants, with a
+        Computer Science background. I work across social media, SEO, and content —
+        and I'm building toward software development and AI/automation roles.
+      </p>
+      <div class="hero-links">
+        <a class="btn primary" href="https://github.com/abishekshiny" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/abishek-rathinam-11b155284/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="mailto:you@email.com">Email</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="wrap">
+      <h2 class="section-title serif">About</h2>
+      <p>
+        I have a <b>B.E. in Computer Science</b> and currently work in digital marketing,
+        handling social media management, off-page SEO, keyword research, and
+        AI-assisted content workflows. That combination of technical grounding and
+        hands-on marketing work is what pulled me toward AI and automation —
+        I like understanding both how something is built and how people actually use it.
+      </p>
+      <p>
+        I'm currently pivoting toward <b>software development and AI/automation</b> roles,
+        and using side projects to build that direction out in public.
+      </p>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <h2 class="section-title serif">Experience</h2>
+      <div class="exp-item">
+        <span class="exp-date">2024 — Present</span>
+        <div>
+          <p class="exp-role">Digital Marketing Trainee</p>
+          <p class="exp-org">Besten Engineers and Consultants India Pvt Ltd</p>
+          <p class="exp-desc">
+            Social media management, off-page SEO (backlink building, directory
+            submissions, business listings), keyword research, and AI-assisted
+            content workflows.
+          </p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <span class="exp-date">2021 — 2025</span>
+        <div>
+          <p class="exp-role">B.E. Computer Science</p>
+          <p class="exp-org">Loyola Institute of Technology and Science</p>
+          <p class="exp-desc">CGPA 7.29 (First Class).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2 class="section-title serif">Projects</h2>
+
+      <!--
+        HOW TO EDIT THIS SECTION
+        ------------------------
+        Each project is one ".project-card" block below. To add a new project,
+        copy a whole block (from <div class="project-card"> to its closing </div>)
+        and paste it before the closing </div> of "project-grid", then change:
+          - project-title text
+          - project-desc text
+          - the <span class="tag"> list (add/remove as needed)
+          - the href and label on the project-link (or delete that line if no link yet)
+        To remove a project, just delete its whole block.
+      -->
+      <div class="project-grid">
+
+        <div class="project-card">
+          <p class="project-title">Project name</p>
+          <p class="project-desc">One or two sentences on what it does and why you built it.</p>
+          <div class="project-tags">
+            <span class="tag">Tech 1</span>
+            <span class="tag">Tech 2</span>
+          </div>
+          <a class="project-link" href="#" target="_blank" rel="noopener">View project →</a>
+        </div>
+
+        <div class="project-card">
+          <p class="project-title">Project name</p>
+          <p class="project-desc">One or two sentences on what it does and why you built it.</p>
+          <div class="project-tags">
+            <span class="tag">Tech 1</span>
+            <span class="tag">Tech 2</span>
+          </div>
+          <a class="project-link" href="#" target="_blank" rel="noopener">View project →</a>
+        </div>
+
+        <div class="project-card">
+          <p class="project-title">Project name</p>
+          <p class="project-desc">One or two sentences on what it does and why you built it.</p>
+          <div class="project-tags">
+            <span class="tag">Tech 1</span>
+            <span class="tag">Tech 2</span>
+          </div>
+          <a class="project-link" href="#" target="_blank" rel="noopener">View project →</a>
+        </div>
+
+        <div class="project-card">
+          <p class="project-title">Project name</p>
+          <p class="project-desc">One or two sentences on what it does and why you built it.</p>
+          <div class="project-tags">
+            <span class="tag">Tech 1</span>
+            <span class="tag">Tech 2</span>
+          </div>
+          <a class="project-link" href="#" target="_blank" rel="noopener">View project →</a>
+        </div>
+
+      </div>
+
+      <p class="more-projects">
+        More on <a href="https://github.com/abishekshiny" target="_blank" rel="noopener">GitHub →</a>
+      </p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <h2 class="section-title serif">Skills</h2>
+      <div class="chip-row">
+        <span class="chip">Digital Marketing</span>
+        <span class="chip">Social Media Management</span>
+        <span class="chip">SEO / Off-page SEO</span>
+        <span class="chip">Keyword Research</span>
+        <span class="chip">Python</span>
+        <span class="chip">Prompt Engineering</span>
+        <span class="chip">AI-Assisted Workflows</span>
+        <span class="chip">Git / GitHub</span>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="wrap">
+      <p class="foot-title serif">Let's talk</p>
+      <div class="hero-links">
+        <a class="btn primary" href="mailto:you@email.com">Email</a>
+        <a class="btn" href="https://www.linkedin.com/in/abishek-rathinam-11b155284/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/abishekshiny" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="copyright">© 2026 Abishek Rathinam.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
